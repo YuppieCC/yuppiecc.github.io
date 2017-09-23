@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="YuppieCC">
 <meta property="og:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-23T14:21:04.000Z">
+<meta property="og:updated_time" content="2017-09-23T14:24:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Cookbook（元编程节选）">
 <meta name="twitter:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
@@ -551,7 +551,7 @@
 <p>这种方式构建一个普通的类对象，并且按照你的指望工作：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = Stock(<span class="string">'ACME'</span>, 50, 91.1)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&lt;stock.Stock object at ... &gt;</div><div class="line">&gt;&gt;&gt; s.cost()</div><div class="line">4555.0</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
 <p>这种方法中，一个比较难理解的地方是在调用完 types.new_class() 对 Stock.__module__ 的赋值。每次当一个类被定义后，它的 __module__ 属性包含定义它的模块名。这个名字用于生成 __repr__() 方法的输出。它同样也被用于很多库，比如 pickle 。因此，为了让你创建的类是“正确”的，你需要确保这个属性也设置正确了。</p>
 <p>如果你想创建的类需要一个不同的元类，可以通过 types.new_class() 第三个参数传递给它。例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import abc</div><div class="line">&gt;&gt;&gt; Stock = types.new_class(<span class="string">'Stock'</span>, (), &#123;<span class="string">'metaclass'</span>: abc.ABCMeta&#125;, lambda ns: ns.update(cls_dict))</div><div class="line">&gt;&gt;&gt; Stock.__module__ = __name__</div><div class="line">&gt;&gt;&gt; Stock</div><div class="line">&lt;class <span class="string">'__main__.Stock'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(Stock)</div><div class="line">&lt;class <span class="string">'abc.ABCMeta'</span>&gt;</div></pre></td></tr></table></figure></p>
-<p>。</p>
+<p>。。</p>
 
       
     </div>
