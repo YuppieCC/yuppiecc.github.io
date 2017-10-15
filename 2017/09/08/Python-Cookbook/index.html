@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="YuppieCC">
 <meta property="og:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-14T14:38:45.000Z">
+<meta property="og:updated_time" content="2017-10-15T15:29:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Cookbook（元编程节选）">
 <meta name="twitter:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T23:07:58Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T07:07:58+08:00">
                 2017-09-07
               </time>
             
@@ -620,6 +620,7 @@
 <p>运行这个程序， 输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Loaded: &#123;<span class="string">'i'</span>, <span class="string">'range'</span>, <span class="string">'print'</span>&#125;</div><div class="line">Stored: &#123;<span class="string">'i'</span>&#125;</div><div class="line">Deleted: &#123;<span class="string">'i'</span>&#125;</div></pre></td></tr></table></figure></p>
 <p>最后， AST 可以通过 compile() 函数来编译并执行。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">exec</span>(compile(top, <span class="string">'&lt;stdin&gt;'</span>, <span class="string">'exec'</span>))</div><div class="line">0</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
 <p>讨论：<br>当你能够分析源代码并从中获取信息的时候，你就能写很多代码分析、优化或验证工具了。例如，相比盲目的传递一些代码片段到类似 exec() 函数中，你可以先将它转换成一个 AST ， 然后观察它的细节看它到底是怎样做的。你还可以写一写工具来查看某个模块的全部源码，并且在此基础上执行某些静态分析。</p>
+<p>下面是一个装饰器例子，可以通过重新解析函数体源码、重写并重新创建函数代码对象来将全局访问变量降为函数体作用范围，<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># namelower.py</span></div><div class="line"><span class="keyword">import</span> ast</div><div class="line"><span class="keyword">import</span> inspect</div></pre></td></tr></table></figure></p>
 
       
     </div>
