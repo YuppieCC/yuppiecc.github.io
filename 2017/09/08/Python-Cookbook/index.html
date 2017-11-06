@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
+<meta name="description" content="元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使">
 <meta name="keywords" content="元编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python Cookbook（元编程节选）">
+<meta property="og:title" content="Python Cookbook（元编程）">
 <meta property="og:url" content="http://yoursite.com/2017/09/08/Python-Cookbook/index.html">
 <meta property="og:site_name" content="YuppieCC">
-<meta property="og:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
+<meta property="og:description" content="元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-05T15:31:21.000Z">
+<meta property="og:updated_time" content="2017-11-06T15:28:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python Cookbook（元编程节选）">
-<meta name="twitter:description" content="第九章  元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签">
+<meta name="twitter:title" content="Python Cookbook（元编程）">
+<meta name="twitter:description" content="元编程软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <title>Python Cookbook（元编程节选） | YuppieCC</title>
+  <title>Python Cookbook（元编程） | YuppieCC</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python Cookbook（元编程节选）</h1>
+          <h1 class="post-title" itemprop="name headline">Python Cookbook（元编程）</h1>
         
 
         <div class="post-meta">
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T07:07:58+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T23:07:58Z">
                 2017-09-07
               </time>
             
@@ -368,7 +368,7 @@
       
 
       
-        <h1 id="第九章-元编程"><a href="#第九章-元编程" class="headerlink" title="第九章  元编程"></a>第九章  元编程</h1><p>软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使用 exec() 执行代码以及对内部函数和类的反射技术等。本章的主要目的是向大家介绍这些元编程技术，并且给出实例来演示它们是怎样定制化你的源代码行为的。<br><a id="more"></a></p>
+        <h1 id="元编程"><a href="#元编程" class="headerlink" title="元编程"></a>元编程</h1><p>软件开发领域中最经典的口头禅就是  “Don’t repeat yourself”  。也就是说，任何时候当你的程序中存在高度重复或者是通过剪切复制的代码时，都应该想想是否有更好的解决方案。在当中，通常都可以通过元编程来解决这类问题。简而言之，元编程就是关于创建操作源代码（比如修改、生成或包装原来的代码）的函数和类。主要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使用 exec() 执行代码以及对内部函数和类的反射技术等。本章的主要目的是向大家介绍这些元编程技术，并且给出实例来演示它们是怎样定制化你的源代码行为的。<br><a id="more"></a></p>
 <h2 id="在函数上添加包装器"><a href="#在函数上添加包装器" class="headerlink" title="在函数上添加包装器"></a>在函数上添加包装器</h2><p>问题：在函数添加一个包装器，增加额外的操作处理（比如日志、计时等）。</p>
 <p>解决：<br>使用额外的代码包装一个函数，可以定义一个装饰器函数。例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">timethis</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    Decorator that reports the execution time.</span></div><div class="line"><span class="string">    '''</span></div><div class="line"><span class="meta">    @wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">        start = time.time()</div><div class="line">        result = func(*args, **kwargs)</div><div class="line">        end = time.time()</div><div class="line">        print(func.__name__, end-start)</div><div class="line">        <span class="keyword">return</span> result</div><div class="line">    <span class="keyword">return</span> wrapper</div></pre></td></tr></table></figure>
@@ -661,6 +661,22 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/07/Python-Cookbook-function/" rel="prev" title="Python-Cookbook(函数)">
+                Python-Cookbook(函数) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
       
@@ -736,7 +752,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -758,7 +774,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -807,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第九章-元编程"><span class="nav-number">1.</span> <span class="nav-text">第九章  元编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在函数上添加包装器"><span class="nav-number">1.1.</span> <span class="nav-text">在函数上添加包装器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建装饰器时保留函数元信息"><span class="nav-number">1.2.</span> <span class="nav-text">创建装饰器时保留函数元信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解除一个装饰器"><span class="nav-number">1.3.</span> <span class="nav-text">解除一个装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义一个带参数的装饰器"><span class="nav-number">1.4.</span> <span class="nav-text">定义一个带参数的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可自定义属性的装饰器"><span class="nav-number">1.5.</span> <span class="nav-text">可自定义属性的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带可选参数的装饰器"><span class="nav-number">1.6.</span> <span class="nav-text">带可选参数的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用装饰器强制函数上的类型检查"><span class="nav-number">1.7.</span> <span class="nav-text">利用装饰器强制函数上的类型检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将装饰器定义为类的一部分"><span class="nav-number">1.8.</span> <span class="nav-text">将装饰器定义为类的一部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将装饰器定义为类"><span class="nav-number">1.9.</span> <span class="nav-text">将装饰器定义为类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为类和静态方法提供装饰器"><span class="nav-number">1.10.</span> <span class="nav-text">为类和静态方法提供装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器为被包装函数增加参数"><span class="nav-number">1.11.</span> <span class="nav-text">装饰器为被包装函数增加参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用装饰器扩充类的功能"><span class="nav-number">1.12.</span> <span class="nav-text">使用装饰器扩充类的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用元类控制实例的创建"><span class="nav-number">1.13.</span> <span class="nav-text">使用元类控制实例的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#捕获类的属性定义顺序"><span class="nav-number">1.14.</span> <span class="nav-text">捕获类的属性定义顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义有可选参数的元类"><span class="nav-number">1.15.</span> <span class="nav-text">定义有可选参数的元类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#args-和-kwargs-的强制参数签名"><span class="nav-number">1.16.</span> <span class="nav-text">*args 和 **kwargs 的强制参数签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在类上强制使用编程规约"><span class="nav-number">1.17.</span> <span class="nav-text">在类上强制使用编程规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以编程方式定义类"><span class="nav-number">1.18.</span> <span class="nav-text">以编程方式定义类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在定义的时候初始化类的成员"><span class="nav-number">1.19.</span> <span class="nav-text">在定义的时候初始化类的成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用函数注解实现方法重载"><span class="nav-number">1.20.</span> <span class="nav-text">利用函数注解实现方法重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免重复的属性方法"><span class="nav-number">1.21.</span> <span class="nav-text">避免重复的属性方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义上下文管理器的简单方法"><span class="nav-number">1.22.</span> <span class="nav-text">定义上下文管理器的简单方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在局部变量域中执行代码"><span class="nav-number">1.23.</span> <span class="nav-text">在局部变量域中执行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析与分析-Python-源码"><span class="nav-number">1.24.</span> <span class="nav-text">解析与分析 Python 源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆解-Python-字节码"><span class="nav-number">1.25.</span> <span class="nav-text">拆解 Python 字节码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#元编程"><span class="nav-number">1.</span> <span class="nav-text">元编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在函数上添加包装器"><span class="nav-number">1.1.</span> <span class="nav-text">在函数上添加包装器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建装饰器时保留函数元信息"><span class="nav-number">1.2.</span> <span class="nav-text">创建装饰器时保留函数元信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解除一个装饰器"><span class="nav-number">1.3.</span> <span class="nav-text">解除一个装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义一个带参数的装饰器"><span class="nav-number">1.4.</span> <span class="nav-text">定义一个带参数的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可自定义属性的装饰器"><span class="nav-number">1.5.</span> <span class="nav-text">可自定义属性的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带可选参数的装饰器"><span class="nav-number">1.6.</span> <span class="nav-text">带可选参数的装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用装饰器强制函数上的类型检查"><span class="nav-number">1.7.</span> <span class="nav-text">利用装饰器强制函数上的类型检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将装饰器定义为类的一部分"><span class="nav-number">1.8.</span> <span class="nav-text">将装饰器定义为类的一部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将装饰器定义为类"><span class="nav-number">1.9.</span> <span class="nav-text">将装饰器定义为类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为类和静态方法提供装饰器"><span class="nav-number">1.10.</span> <span class="nav-text">为类和静态方法提供装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器为被包装函数增加参数"><span class="nav-number">1.11.</span> <span class="nav-text">装饰器为被包装函数增加参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用装饰器扩充类的功能"><span class="nav-number">1.12.</span> <span class="nav-text">使用装饰器扩充类的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用元类控制实例的创建"><span class="nav-number">1.13.</span> <span class="nav-text">使用元类控制实例的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#捕获类的属性定义顺序"><span class="nav-number">1.14.</span> <span class="nav-text">捕获类的属性定义顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义有可选参数的元类"><span class="nav-number">1.15.</span> <span class="nav-text">定义有可选参数的元类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#args-和-kwargs-的强制参数签名"><span class="nav-number">1.16.</span> <span class="nav-text">*args 和 **kwargs 的强制参数签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在类上强制使用编程规约"><span class="nav-number">1.17.</span> <span class="nav-text">在类上强制使用编程规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以编程方式定义类"><span class="nav-number">1.18.</span> <span class="nav-text">以编程方式定义类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在定义的时候初始化类的成员"><span class="nav-number">1.19.</span> <span class="nav-text">在定义的时候初始化类的成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用函数注解实现方法重载"><span class="nav-number">1.20.</span> <span class="nav-text">利用函数注解实现方法重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免重复的属性方法"><span class="nav-number">1.21.</span> <span class="nav-text">避免重复的属性方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义上下文管理器的简单方法"><span class="nav-number">1.22.</span> <span class="nav-text">定义上下文管理器的简单方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在局部变量域中执行代码"><span class="nav-number">1.23.</span> <span class="nav-text">在局部变量域中执行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析与分析-Python-源码"><span class="nav-number">1.24.</span> <span class="nav-text">解析与分析 Python 源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆解-Python-字节码"><span class="nav-number">1.25.</span> <span class="nav-text">拆解 Python 字节码</span></a></li></ol></li></ol></div>
             
 
           </div>
