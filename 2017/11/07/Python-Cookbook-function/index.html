@@ -98,14 +98,14 @@
 <meta name="description" content="函数使用语句定义函数是所有程序的基础。本章讲述一些更加高级和不常见的函数定义与使用模式。涉及到的内容包括默认参数、任意数量参数、强制关键 字参数、注解和闭包。另外，一些高级的控制流和利用回调函数传递数据的技术在这里也会讲解到。">
 <meta name="keywords" content="函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python-Cookbook(函数)">
+<meta property="og:title" content="Python Cookbook（函数）">
 <meta property="og:url" content="http://yoursite.com/2017/11/07/Python-Cookbook-function/index.html">
 <meta property="og:site_name" content="YuppieCC">
 <meta property="og:description" content="函数使用语句定义函数是所有程序的基础。本章讲述一些更加高级和不常见的函数定义与使用模式。涉及到的内容包括默认参数、任意数量参数、强制关键 字参数、注解和闭包。另外，一些高级的控制流和利用回调函数传递数据的技术在这里也会讲解到。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-06T15:29:48.000Z">
+<meta property="og:updated_time" content="2017-11-07T13:07:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python-Cookbook(函数)">
+<meta name="twitter:title" content="Python Cookbook（函数）">
 <meta name="twitter:description" content="函数使用语句定义函数是所有程序的基础。本章讲述一些更加高级和不常见的函数定义与使用模式。涉及到的内容包括默认参数、任意数量参数、强制关键 字参数、注解和闭包。另外，一些高级的控制流和利用回调函数传递数据的技术在这里也会讲解到。">
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <title>Python-Cookbook(函数) | YuppieCC</title>
+  <title>Python Cookbook（函数） | YuppieCC</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python-Cookbook(函数)</h1>
+          <h1 class="post-title" itemprop="name headline">Python Cookbook（函数）</h1>
         
 
         <div class="post-meta">
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T23:28:04Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T07:28:04+08:00">
                 2017-11-06
               </time>
             
@@ -368,7 +368,21 @@
       
 
       
-        <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>使用语句定义函数是所有程序的基础。本章讲述一些更加高级和不常见的函数定义与使用模式。涉及到的内容包括默认参数、任意数量参数、强制关键 字参数、注解和闭包。另外，一些高级的控制流和利用回调函数传递数据的技术在这里也会讲解到。 </p>
+        <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>使用语句定义函数是所有程序的基础。本章讲述一些更加高级和不常见的函数定义与使用模式。涉及到的内容包括默认参数、任意数量参数、强制关键 字参数、注解和闭包。另外，一些高级的控制流和利用回调函数传递数据的技术在这里也会讲解到。<br><a id="more"></a></p>
+<h2 id="可接受任意数量参数的函数"><a href="#可接受任意数量参数的函数" class="headerlink" title="可接受任意数量参数的函数"></a>可接受任意数量参数的函数</h2><p>问题：<br>你想构造一个可接受任意数量参数的函数。</p>
+<p>解决方案：<br>为了能让一个函数接受任意数量的位置参数，可以使用一个 * 参数。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def avg(first, *rest):</div><div class="line">    <span class="built_in">return</span> (first + sum(rest)) / (1 + len(rest))</div><div class="line"></div><div class="line"><span class="comment"># Sample use</span></div><div class="line">avg(1, 2) <span class="comment"># 1.5</span></div><div class="line">avg(1, 2, 3, 4) <span class="comment"># 2.5</span></div></pre></td></tr></table></figure></p>
+<p>在这个例子中，rest 是由所有其他位置参数组成的元组。然后我们在代码中把它当成了一个序列来进行后续的计算。<br>为了接受任意数量的关键字参数，使用一个以 ** 开头的参数。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> html</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_element</span><span class="params">(name, value, **attrs)</span>:</span></div><div class="line">    keyvals = [<span class="string">'%s="%s"'</span> % item <span class="keyword">for</span> item <span class="keyword">in</span> attrs.items()]</div><div class="line">    attr_str = <span class="string">''</span>.join(keyvals)</div><div class="line">    element = <span class="string">'&lt;&#123;name&#125;&#123;attrs&#125;&gt;&#123;value&#125;&lt;/&#123;name&#125;&gt;'</span>.format(</div><div class="line">            name=name, </div><div class="line">            attrs = attr_str,</div><div class="line">            value = html.escape(value)</div><div class="line">    )</div><div class="line">    <span class="keyword">return</span> element</div><div class="line"></div><div class="line"><span class="comment"># Example</span></div><div class="line"><span class="comment"># Creats '&lt;item size="large" quantity="6"&gt;Albatross&lt;/item&gt;'</span></div><div class="line">make_element(<span class="string">'item'</span>, <span class="string">'Albatross'</span>, size=<span class="string">'large'</span>, quantity=<span class="number">6</span>)</div><div class="line"></div><div class="line"><span class="comment"># Creates '&lt;p&gt;&amp;lt; spam&amp;gt;&lt;/p&gt;'</span></div><div class="line">make_element(<span class="string">'p'</span>, <span class="string">'&lt;spam&gt;'</span>)</div></pre></td></tr></table></figure></p>
+<p>在这里，attrs 是一个包含所有被传入进来的关键字参数的字典。<br>如果你还希望某个函数能同时接受任意数量的位置参数和关键字参数，可以同时使用 <em> 和 *</em>。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">anyargs</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">    print(args) <span class="comment"># A tuple</span></div><div class="line">    print(kwargs) <span class="comment"># A dict</span></div></pre></td></tr></table></figure></p>
+<p>使用这个函数时，所有位置参数会被放到 args 元组中，所有关键字参数会被放到字典 kwargs 中。</p>
+<p>讨论：<br>一个 <em> 参数只能出现在函数定义中最后一个位置参数后面，而 ** 参数只能出现在最后一个参数。有一点要注意的是,<br>在 </em> 参数后面仍然可以定义其他参数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">(x, *args, y)</span>:</span>		<span class="comment"># 错误 </span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">(x, *args, y, **kwargs)</span>:</span>  <span class="comment"># 错误</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<p>这就是强制关键字参数</p>
+<h2 id="只接受关键字参数的函数"><a href="#只接受关键字参数的函数" class="headerlink" title="只接受关键字参数的函数"></a>只接受关键字参数的函数</h2><p>问题：<br>你希望函数的某些参数强制使用关键字参数传递</p>
+<p>解决方案：<br>将强制关键字参数放到某个 <em> 参数或者单个 </em> 后面就能达到这种效果。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv</span><span class="params">(maxsize, *, block)</span>:</span>  <span class="comment"># Python 3</span></div><div class="line">    <span class="string">'Receives a message'</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">    </div><div class="line">recv(<span class="number">1024</span>, <span class="keyword">True</span>) <span class="comment"># TypeError</span></div><div class="line">rece(<span class="number">1024</span>, block=<span class="keyword">True</span>) <span class="comment"># Ok</span></div></pre></td></tr></table></figure></p>
+<p>利用这种技术，我们还能在接受任意多个位置参数的函数中指定关键字参数。比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mininum</span><span class="params">(*values, clip=None)</span>:</span></div><div class="line">    m = min(values)</div><div class="line">    <span class="keyword">if</span> clip <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">        m = clip <span class="keyword">if</span> clip &gt; m <span class="keyword">else</span> m</div><div class="line">    <span class="keyword">return</span> m</div><div class="line">    </div><div class="line">mininum(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">-5</span>, <span class="number">10</span>) <span class="comment"># Returns -5</span></div><div class="line">mininum(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">-5</span>, <span class="number">10</span>, clip=<span class="number">0</span>) <span class="comment"># Returns 0</span></div></pre></td></tr></table></figure></p>
+<p>讨论：<br>很多情况下，使用强制关键字参数会比位置参数表意更加清晰，程序也更加具有可读性。例如，考虑下如下一个函数调用：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msg = recv(<span class="number">1024</span>, <span class="keyword">False</span>)</div></pre></td></tr></table></figure></p>
+<p>如果调用者对 recv 函数并不是很熟悉，那他肯定不明白那个 False 参数到底来干嘛用的。但是，如果代码变成下面这样子的话就清楚多了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msg = recv(<span class="number">1024</span>, block=<span class="keyword">False</span>)</div></pre></td></tr></table></figure></p>
+<p>另外，使用强制关键字参数也会比使用 **kwargs 参数更好，因为在使用函数 help 的时候输出也会更容易理解：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">help</span>(recv)</div><div class="line">Help on <span class="keyword">function</span> recv <span class="keyword">in</span> module __main__:</div><div class="line">recv(maxsize, *, block)</div><div class="line">    Receives a message</div></pre></td></tr></table></figure></p>
+<p>强制关键字参数在一些更高级场合同样也很有用。例如，它们可以被用来在使用 <em>args 和 *</em>kwargs 参数作为输入的函数中插入参数。</p>
 
       
     </div>
@@ -558,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可接受任意数量参数的函数"><span class="nav-number">1.1.</span> <span class="nav-text">可接受任意数量参数的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只接受关键字参数的函数"><span class="nav-number">1.2.</span> <span class="nav-text">只接受关键字参数的函数</span></a></li></ol></li></ol></div>
             
 
           </div>
