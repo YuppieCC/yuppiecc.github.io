@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="YuppieCC">
 <meta property="og:description" content="类与对象本章主要关注点的是和类定义有关的常见编程模型。包括让对象支持常见的 Python 特性、特殊方法的使用、类封装技术、继承、内存管理以及有用的设计模式。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-30T15:47:49.000Z">
+<meta property="og:updated_time" content="2017-11-30T15:52:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Cookbook（类与对象）">
 <meta name="twitter:description" content="类与对象本章主要关注点的是和类定义有关的常见编程模型。包括让对象支持常见的 Python 特性、特殊方法的使用、类封装技术、继承、内存管理以及有用的设计模式。">
@@ -416,7 +416,7 @@
 <p>上述代码中有三个相关联的方法，这三个方法的名字都必须一样。 </p>
 </blockquote>
 <p>第一个方法是一个 getter 函数，它使得 first_name 成为一个属性。其他两个方法给 first_name 属性添加了 setter 和 deleter 函数。需要强调的是只有在 fist_name 属性被创建后， 后面的两个装饰器 @first_name.setter 和 @first_name.deleter 才能被定义。</p>
-<p>property</p>
+<p>property 的一个关键特征是它看上去跟普通的 attribute 没什么两样，但是访问它的时候会自动触发 getter、setter 和 deleter 方法。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = Person(<span class="string">'Guido'</span>)</span><br><span class="line">&gt;&gt;&gt; a.first_name <span class="comment"># Calls the getter</span></span><br><span class="line"><span class="string">'Guido'</span></span><br><span class="line">&gt;&gt;&gt; a.first_name = 42 <span class="comment"># Calls the setter</span></span><br><span class="line">Traceback(most recent call last):</span><br><span class="line">    raise TypeError(<span class="string">'Expected a string'</span>)</span><br><span class="line">TypeError: Expected a string</span><br><span class="line">&gt;&gt;&gt; del a.first_name</span><br><span class="line">Traceback(most recent call last):</span><br><span class="line">AttributeError: can<span class="string">'t delete attribute</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
