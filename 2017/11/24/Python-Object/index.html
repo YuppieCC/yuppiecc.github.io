@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="YuppieCC">
 <meta property="og:description" content="类与对象本章主要关注点的是和类定义有关的常见编程模型。包括让对象支持常见的 Python 特性、特殊方法的使用、类封装技术、继承、内存管理以及有用的设计模式。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-09T14:12:35.000Z">
+<meta property="og:updated_time" content="2017-12-12T15:28:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Cookbook（类与对象）">
 <meta name="twitter:description" content="类与对象本章主要关注点的是和类定义有关的常见编程模型。包括让对象支持常见的 Python 特性、特殊方法的使用、类封装技术、继承、内存管理以及有用的设计模式。">
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-23T23:29:25Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-24T07:29:25+08:00">
                 2017-11-23
               </time>
             
@@ -451,6 +451,12 @@
 <li>如果对下一个类存在两个合法的选择，选择第一个父类</li>
 </ul>
 <p>你所要知道的就是 MRO 列表中的类顺序会让你定义的任意类层级关系变得有意义。 </p>
+<p>当你使用 super() 函数时，Python 会在 MRO 列表上继续搜索下一个类。只要每个重定义的方法统一使用 super() 并只调用它一次，那么控制流最终会遍历完整个  MRO 表，每个方法也只会被调用一次。这也是为什么在第二个例子中你不会调用两次 Base.__init__() 的原因。 </p>
+<p>super() 并不一定去查找某个类在 MRO 中下一个直接父类，你甚至可以在一个没有直接父类的类中使用它。例如，考虑如下这个类:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spam</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'A.spam'</span>)</span><br><span class="line">        super().spam()</span><br></pre></td></tr></table></figure></p>
+<p>如果你试着直接使用这个类就会出错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = A()</span><br><span class="line">&gt;&gt;&gt; a.spam()</span><br><span class="line">A.spam</span><br><span class="line">Traceback:</span><br><span class="line">AttributeError: <span class="string">'super'</span> obejct has no attribute <span class="string">'spam'</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果你使用多继承的话：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class B:</span><br><span class="line">...     def spam(self):</span><br><span class="line">...         <span class="built_in">print</span>(<span class="string">'B.spam'</span>)</span><br><span class="line">&gt;&gt;&gt; class C(A, B):</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; c = C()</span><br><span class="line">&gt;&gt;&gt; c.spam()</span><br><span class="line">A.spam()</span><br><span class="line">B.spam()</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>你可以看到在类 A 中使用 super().spam() 实际上调用的是跟类 A 毫无关系的类 B 中的 spam() 方法。这个用类 C 的 MRO 列表就可以完全解释清楚了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; C.__mro__</span><br><span class="line">(&lt;class <span class="string">'__main__.C'</span>&gt;, &lt;class <span class="string">'__main__.A'</span>&gt;, &lt;class <span class="string">'__main__.B'</span>&gt;,</span><br><span class="line">&lt;class <span class="string">'__main__.Object'</span>&gt;)</span><br></pre></td></tr></table></figure></p>
+<p>详见 P246</p>
 
       
     </div>
