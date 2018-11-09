@@ -202,4 +202,43 @@ if __name__ == "__main__":
 # Floor: One | Size: Big and fancy
 ```
 
+## factory method 工厂方法
+
+工厂方法模式能够封装具体类型的实例化，抽象的 get\_localizer 提供了一个创建对象的工厂方法。
+
+```python
+class ChineseGetter(object):
+    """A simple localizer a la gettext"""
+    
+    def __init__(self):
+        self.trans = dict(dog="狗", cat="猫")
+        
+    def get(self, msgid):
+        """如果没有对应翻译，就提供默认值"""
+        return self.trans.get(msgid, str(msgid))
+        
+class EnglishGetter(object):
+    """Simply echoes the msg ids"""
+   
+    def get(self, msgid):
+        return str(msgid)
+        
+def get_localizer(language="English"):
+    """The factory method"""
+    languages = dict(English=EnglishGetter, Chinese=ChineseGetter)
+    return languages[language]()
+    
+if __name__ == '__main__':
+    # Create our localizers
+    e, g = get_localizer(language="English"), get_localizer(language="Chinese")
+    # Localize some text
+    for msgid in "dog parrot cat bear".split():
+        print(e.get(msgid), g.get(msgid))
+        
+### OUTPUT ###
+# dog 狗
+# parrot parrot
+# cat 猫
+# bear bear
+```
 
